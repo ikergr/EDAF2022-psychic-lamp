@@ -53,6 +53,85 @@ void metodoBurbuja(int arreglo [], int n){
     }
 }
 
+void metodoSeleccion(int arreglo [],int n){
+    int i,j,indiceMenor,aux;
+    //Pasadas
+    for(i=0;i<n-1;i++){ //O(n)
+        indiceMenor=i;
+        //Búsqueda del indice del valor menor
+        for(j=i+1;j<n;j++) //O(n)
+            if(arreglo[j]<arreglo[indiceMenor]) //O(1)
+                indiceMenor=j; //Actualiaza el indice menor actual
+        //Swap
+        aux=arreglo[i];
+        arreglo[i]=arreglo[indiceMenor];
+        arreglo[indiceMenor]=aux;
+    }
+}
+
+void metodoInsercion(int arreglo[],int n){
+    int i, j, aux;
+    for(i=1;i<n;i++){ //O(n)
+        j=i;
+        aux=arreglo[i];
+        while(j>0&&aux<arreglo[j-1]){
+            arreglo[j]=arreglo[j-1];
+            j--;
+        }
+        arreglo[j]=aux;
+    }
+}
+
+void merge(int arreglo[], int inicio,int mitad,int fin){
+    //i -> indice para parte izq, j -> indice parte derecha
+    //k -> indice del arreglo a ordenar
+    int i, j, k; 
+    //Numero de elementos de la parte izq
+    int nizq = mitad-inicio+1;
+    //Numero de elementos de la parte der
+    int nder =fin-mitad;
+    //Declarar arreglos auxiliares de izq y der
+    int izq[nizq], der[nder];
+    //Copiar los datos del arreglo original en izq y der
+    for(i=0;i<nizq;i++)
+        izq[i]=arreglo[inicio+i];
+    for(j=0;j<nder;j++)
+        der[j]=arreglo[mitad+j+1];
+    //Realizar el merge
+    i=0;
+    j=0;
+    k=inicio;
+    while(i<nizq&&j<nder){
+        //Determinar el valor menor
+        if(izq[i]<=der[j])
+            arreglo[k++]=izq[i++];
+        else
+            arreglo[k++]=der[j++];        
+    }
+    //Vaciar remanentes
+    //La parte derecha se acabo vaciamos la parte izquierda en el arreglo
+    while(i<nizq)
+        arreglo[k++]=izq[i++];
+    //La parte izquierda se acabo vaciamos la parte derecha en el arreglo
+    while(j<nder)
+        arreglo[k++]=der[j++];    
+}
+
+//FuncionRecursiva
+void mergeSort(int arreglo[], int inicio,int fin){
+    //Caso recursivo
+    if(inicio<fin){
+        //Obtener el indice a la mitad
+        int mitad = inicio+(fin-inicio)/2;
+        //Izquierdo
+        mergeSort(arreglo,inicio,mitad);
+        //Derecho
+        mergeSort(arreglo,mitad+1,fin);
+        merge(arreglo,inicio,mitad,fin);
+    }
+    //Caso base
+}
+
 //main
 int main(){
     int tam;
@@ -63,6 +142,6 @@ int main(){
     //Generar un arreglo aleatorio 
     generarArreglo(arreglo,tam);
     imprimirArreglo(arreglo,tam);
-    metodoBurbuja(arreglo,tam);
+    mergeSort(arreglo,0,tam-1);
     imprimirArreglo(arreglo,tam);
 }
