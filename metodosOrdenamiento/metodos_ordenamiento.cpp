@@ -132,6 +132,42 @@ void mergeSort(int arreglo[], int inicio,int fin){
     //Caso base
 }
 
+int particion(int arreglo[], int inicio, int fin){
+    return 0;
+}
+
+//QuickSort recursiva
+void quickSort(int arreglo[],int inicio, int fin){
+    //Caso recursivo
+    if(inicio<fin){
+        //Encontrar la posición final (indice del pivote dentro del arreglo) y 
+        //además colocar los elementos menores a la izquierda y los mayores a la derecha
+        int pivote = particion(arreglo,inicio, fin);
+        //Partición izquierda
+        quickSort(arreglo,inicio,pivote-1);
+        //Partición derecha
+        quickSort(arreglo,pivote+1,fin);
+    }
+    //Caso base
+}
+
+int busquedaBinaria(int arreglo[],int clave, int n){
+    int inicio,mitad,fin, valorCentral;
+    inicio=0;
+    fin=n-1;
+    while(inicio<=fin){
+        mitad=(inicio+fin)/2;
+        valorCentral=arreglo[mitad];
+        if(clave==valorCentral)
+            return mitad;
+        else if(clave<valorCentral) //izq
+            fin=mitad-1;
+        else //der
+            inicio=mitad+1;
+    }
+    return -1;
+}
+
 //main
 int main(){
     int tam;
