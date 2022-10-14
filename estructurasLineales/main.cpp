@@ -6,7 +6,13 @@ int main(){
     lista->agregarInicio(8);
     lista->agregarInicio(10);
     lista->imprimirLista();
-    //head-> 10 -> 8 -> 4
+    //head-> 10 -> 8 -> 4 -> nullptr
+    lista->agregarFin(319);
+    lista->imprimirLista();
+    //head-> 10 -> 8 -> 4 -> 319 -> nullptr
+    
+    cout<<"Valor:" <<lista->buscarNodo(1)->getDato()<<" "<<endl;
+
 
 
     ListaSimple listaStack; //Crear un lista en el stack
