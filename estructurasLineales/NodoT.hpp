@@ -33,4 +33,4 @@ class NodoT{
             this->dato=dato;
             this->siguiente=siguiente;
         }
-}
+};

@@ -13,7 +13,7 @@ int main(){
     lista->imprimirLista();
     //head-> 10 -> 8 -> 4 -> 319 -> nullptr
     
-    cout<<"Valor:" <<lista->buscarNodo(1)->getDato()<<" "<<endl;
+    cout<<"Valor:" <<lista->buscarNodo(10)->getDato()<<" "<<endl;
 
 
 
@@ -26,9 +26,10 @@ int main(){
     cout<<"*******************"<<endl;
 
     ListaCircular<string> * listaC = new ListaCircular<string>();
+    
     listaC->agregarInicio("CEM");
     listaC->agregarInicio("TEC");
-    listaC->imprimirLista();
+    listaC->imprimirListaCircular();
     //last->CEM->TEC--->last
     listaC->agregarFin("21");
     //last->21->TEC->CEM---->last
