@@ -20,4 +20,6 @@ class NodoBST{
         NodoBST<T> * getPadre();
         NodoBST(NodoBST<T> *, T); //new
         ~NodoBST();  // delete
+
+        static void recorridoPreOrden(NodoBST<T>*);
 };

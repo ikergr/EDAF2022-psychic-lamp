@@ -37,3 +37,13 @@ NodoBST<T>::~NodoBST(){
     cout<<"Destrucción"<<endl;
 }
 
+template <class T>
+void NodoBST<T>::recorridoPreOrden(NodoBST<T> * actual){
+    if(actual){
+        cout<<actual->getDato()<<" ";
+        recorridoPreOrden(actual->getIzq());
+        recorridoPreOrden(actual->getDer());
+    }
+}
+
+
