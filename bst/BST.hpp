@@ -16,5 +16,9 @@ class BST{
         
         void agregarNodo(T);
         NodoBST<T> * buscarNodo(T);
+        void imprimirPreOrder();
+        void imprimirInOrder();
+        void imprimirPostOrder();
+        void eliminarNodo(T dato);
 
 };

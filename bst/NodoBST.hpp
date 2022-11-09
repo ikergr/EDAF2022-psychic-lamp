@@ -22,4 +22,9 @@ class NodoBST{
         ~NodoBST();  // delete
 
         static void recorridoPreOrden(NodoBST<T>*);
+        static void recorridoInOrden(NodoBST<T>*);
+        static void recorridoPostOrden(NodoBST<T>*);
+
+        static NodoBST<T> * valorMayor(NodoBST<T> *);
+
 };

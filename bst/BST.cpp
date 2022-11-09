@@ -56,3 +56,19 @@ NodoBST<T> * BST<T>::buscarNodo(T dato){
     }
     return nullptr;
 }
+
+template <class T>
+void BST<T>::imprimirPreOrder(){
+    NodoBST<T>::recorridoPreOrder(this->raiz);
+    cout<<endl;
+}
+template <class T>
+void BST<T>::imprimirInOrder(){
+    NodoBST<T>::recorridoInOrder(this->raiz);
+    cout<<endl;
+}
+template <class T>
+void BST<T>::imprimirPostOrder(){
+    NodoBST<T>::recorridoPostOrder(this->raiz);
+    cout<<endl;
+}

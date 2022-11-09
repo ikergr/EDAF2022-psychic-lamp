@@ -46,4 +46,29 @@ void NodoBST<T>::recorridoPreOrden(NodoBST<T> * actual){
     }
 }
 
+template <class T>
+void NodoBST<T>::recorridoInOrden(NodoBST<T> * actual){
+    if(actual){
+        recorridoInOrden(actual->getIzq());
+        cout<<actual->getDato()<<" ";
+        recorridoInOrden(actual->getDer());
+    }
+}
+
+template <class T>
+void NodoBST<T>::recorridoPostOrden(NodoBST<T> * actual){
+    if(actual){
+        recorridoPostOrden(actual->getIzq());
+        recorridoPostOrden(actual->getDer());
+        cout<<actual->getDato()<<" ";
+    }
+}
+
+template <class T>
+NodoBST<T> * NodoBST<T>::valorMayor(NodoBST<T> *actual){
+    if(actual)
+        while(actual->getDer())
+            actual=actual->getDer();
+    return actual;
+}
 
