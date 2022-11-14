@@ -9,22 +9,54 @@ class NodoBST{
         NodoBST<T> * der;
         NodoBST<T> * padre;
     public:
-        void setDato(T);
-        void setIzq(NodoBST<T> *);
-        void setDer(NodoBST<T> *);
-        void setPadre(NodoBST<T> *);
+        T getDato(){return this->dato;}        
+        NodoBST<T> * getIzq(){return this->izq;}       
+        NodoBST<T> * getDer(){return this->der;}      
+        NodoBST<T> * getPadre(){return this->padre;}
+        void setDato(T dato){this->dato=dato;}
+        void setIzq(NodoBST<T> * izq){this->izq=izq;}
+        void setDer(NodoBST<T> * der){this->der=der;}
+        void setPadre(NodoBST<T> * padre){this->padre=padre;}
 
-        T getDato();
-        NodoBST<T> * getIzq();
-        NodoBST<T> * getDer();
-        NodoBST<T> * getPadre();
-        NodoBST(NodoBST<T> *, T); //new
-        ~NodoBST();  // delete
+        //Constructores        
+        NodoBST(NodoBST<T> * padre, T dato){
+            this->padre=padre;
+            this->dato=dato;
+        }
 
-        static void recorridoPreOrden(NodoBST<T>*);
-        static void recorridoInOrden(NodoBST<T>*);
-        static void recorridoPostOrden(NodoBST<T>*);
+        //-Destructores
+        ~NodoBST(){
+            cout<<"Destrucción"<<endl;
+        }
 
-        static NodoBST<T> * valorMayor(NodoBST<T> *);
+        static void recorridoPreOrden(NodoBST<T> * actual){
+            if(actual){
+                cout<<actual->getDato()<<" ";
+                recorridoPreOrden(actual->getIzq());
+                recorridoPreOrden(actual->getDer());
+            }
+        }
 
+        static void recorridoInOrden(NodoBST<T> * actual){
+            if(actual){
+                recorridoInOrden(actual->getIzq());
+                cout<<actual->getDato()<<" ";
+                recorridoInOrden(actual->getDer());
+            }
+        }
+
+        static void recorridoPostOrden(NodoBST<T> * actual){
+            if(actual){
+                recorridoPostOrden(actual->getIzq());
+                recorridoPostOrden(actual->getDer());
+                cout<<actual->getDato()<<" ";
+            }
+        }
+
+        static NodoBST<T> * valorMayor(NodoBST<T> *actual){
+            if(actual)
+                while(actual->getDer())
+                    actual=actual->getDer();
+            return actual;
+        }
 };
