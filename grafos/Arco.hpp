@@ -9,4 +9,6 @@ class Arco{
             this->valorNodoDestino=valorNodoDestino;
             this->peso=peso;
         }
+        T getValor(){return this->valorNodoDestino;}
+        int getPeso(){return this->peso;}
 };
