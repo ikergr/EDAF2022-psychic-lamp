@@ -16,5 +16,7 @@ int main(){
     ejemplo->agregarArco("OAX","GDL",2000);
     ejemplo->agregarArco("GDL","MTY",1000);
     ejemplo->agregarArco("TLX","VER",150);
+    ejemplo->agregarArco("CDMX","VER",450);
 
+    ejemplo->imprimirGrafo();
 }
